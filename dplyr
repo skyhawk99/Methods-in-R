@@ -5,7 +5,7 @@
 library(dplyr)
 
 # Load data
-data = data.frame(Titanic)
+data <- data.frame(Titanic)
 
 # Get total number of passengers
 number_passengers <- summarise(data, number_passengers = sum(Freq))
