@@ -1,0 +1,41 @@
+# USEFUL FUNCTIONS IN THE DPLYR LIBRARY
+# (Using the pre-installed Titanic dataset)
+
+# Load dplyr
+library(dplyr)
+
+# Load data
+data = data.frame(Titanic)
+
+# Get total number of passengers
+number_passengers <- summarise(data, number_passengers = sum(Freq))
+
+# Getting total number of passengers through piping
+number_passengers <- data %>% 
+  summarise(number_passengers = sum(Freq))
+
+# Using group_by to find the total number of passengers in each class
+number_passengers_class <- data %>% 
+  group_by(Class) %>% 
+  summarise(number_passengers = sum(Freq))
+
+# Using select to get ONLY sex, age, and frequency
+data_sex_age_freq <- data %>% 
+  select(Sex, Age, Freq)
+
+# Using mutate to create a new column of frequency multiplied by ten
+data2 <- data %>% 
+  mutate(Freq_10 = Freq * 10)
+
+# Using filter to remove male observations
+data_female <- data %>% 
+  filter(Sex == "Female")
+
+# Using arrange to order data by frequency 
+# (Order will be ascending by default)
+data <- data %>% 
+  arrange(Freq)
+
+# Using arrange to order data in descending order
+data <- data %>% 
+  arrange(desc(Freq))
