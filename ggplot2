@@ -1,0 +1,35 @@
+# USEFUL FUNCTIONS IN THE GGPLOT2 LIBRARY
+
+# Load library 
+# (ggplot2 package is included in tidyverse)
+library(tidyverse)
+
+# Load data
+# (Using the pre-installed mpg dataset)
+data <- data.frame(mpg)
+
+# Plotting highway efficiency (hwy) against engine size (displ) in base R
+# (NOT using ggplot2)
+plot(mpg$displ, mpg$hwy)
+# The plot above functions correctly, but is rather bland and changing plot features
+# is complex
+
+# This is where ggplot2 comes in 
+
+# ggplot2 syntax for the plot above
+
+# 1. ggplot() call sets up the coordinate system
+ggplot(data = mpg) + # Creates a blank canvas
+# 2. geom_point() adds a layer of points to the plot 
+  geom_point(mapping = aes(x = displ, y = hwy))
+# There are many geom_xxxx functions and each one requires a mapping which 
+# map to a visual element in the plot 
+# In the plot above the x-axis property is mapped to displ and the y-axis
+# property is mapped to hwy 
+
+# ggplot2 provides a more aesthetically pleasing plot immediately 
+
+# Sample ggplot2 template 
+# (Minimum required for a ggplot)
+# ggplot(data = {data_set}) + 
+  # geom_xxxx({mapping} = aes({mapping_details}))
